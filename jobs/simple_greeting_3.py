@@ -1,27 +1,27 @@
-"""Simple Greeting Form 2 — second example Job from Git."""
+"""Simple Greeting Form 3 — Job on the demo-greeting-3 Git branch."""
 
 from nautobot.apps import jobs
 
 name = "My GitHub Jobs"
 
 
-class SimpleGreetingForm2Job(jobs.Job):
+class SimpleGreetingForm3Job(jobs.Job):
     class Meta:
-        name = "Simple Greeting Form 2"
-        description = "Second greeting Job from the nautobot-jobs Git repository."
+        name = "Simple Greeting Form 3"
+        description = "Greeting Job from the demo-greeting-3 branch of nautobot-jobs."
         has_sensitive_variables = False
 
     person_name = jobs.StringVar(
         label="Your name",
         description="Who should we greet?",
-        default="friend",
+        default="branch tester",
     )
 
     message = jobs.TextVar(
         label="Message",
         description="Optional note to include in the job output.",
         required=False,
-        default="Hello again from Git!",
+        default="Synced from the demo-greeting-3 branch!",
     )
 
     mood = jobs.ChoiceVar(
@@ -31,14 +31,14 @@ class SimpleGreetingForm2Job(jobs.Job):
             ("calm", "Calm"),
         ),
         description="Pick a mood for the greeting.",
-        default="excited",
+        default="calm",
     )
 
     def run(self, *, person_name, message, mood):
-        self.logger.info("Greeting #2 for %s (feeling %s)", person_name, mood)
+        self.logger.info("Greeting #3 (branch demo-greeting-3) for %s (feeling %s)", person_name, mood)
         if message:
             self.logger.info("Message: %s", message)
-        self.logger.success("Simple Greeting Form 2 completed.")
+        self.logger.success("Simple Greeting Form 3 completed.")
 
 
-jobs.register_jobs(SimpleGreetingForm2Job)
+jobs.register_jobs(SimpleGreetingForm3Job)
