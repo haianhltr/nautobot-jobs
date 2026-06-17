@@ -38,7 +38,7 @@ class SimpleGreetingForm3Job(jobs.Job):
         self.logger.info("Greeting #3 (branch demo-greeting-3) for %s (feeling %s)", person_name, mood)
         if message:
             self.logger.info("Message: %s", message)
-        self.logger.success("Simple Greeting Form 3 completed.")
+        self.logger.info("Simple Greeting Form 3 completed.")
 
 
 jobs.register_jobs(SimpleGreetingForm3Job)
